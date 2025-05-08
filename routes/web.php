@@ -25,7 +25,7 @@ Route::get('/customerManager', [CustomerController::class, 'showCustomerManager'
 // Load view Product
 Route::get('/productManager', [ProductController::class, 'showProductManager'])->name('product.manager');
 Route::get('/productManager/productDetail', [ProductController::class, 'showProductDetail'])->name('product.detail');
-Route::get('/productManager/productDetail/{product_id}', [ProductController::class, 'showProductDetail'])->name('product.detail');
+Route::get('/productManager/productDetail/{product_id}', [ProductController::class, 'showProductDetail']);
 Route::get('/api/users/searchUser', [UserController::class, 'searchUser']);
 
 //Customer api route
