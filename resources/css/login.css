@@ -1,0 +1,19 @@
+.card {
+    width: 600px;
+    height: 500px;
+}
+.form-control {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 30px;
+}
+.input-group-text i {
+    font-size: 18px;
+}
+.form-group {
+    margin: 40px 40px;
+}
+.alert {
+    margin-top: 10px;
+    font-size: 14px;
+}
