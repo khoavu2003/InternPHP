@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('mst_customer', function (Blueprint $table) {
             $table->bigIncrements('customer_id'); // Khóa chính tự tăng
             $table->string('customer_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('tel_num')->nullable();
             $table->text('address')->nullable();
             $table->boolean('is_active')->default(true);
