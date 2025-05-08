@@ -39,7 +39,7 @@
 <body style="background-color: #ccc;">
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="card p-4 shadow">
-            <form action="{{ route('login') }}" method="POST">
+            <form action="/login" method="POST">
                 @csrf
                 <div class="form-group">
                     <div class="input-group">
