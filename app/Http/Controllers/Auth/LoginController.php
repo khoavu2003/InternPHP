@@ -31,7 +31,7 @@ class LoginController extends Controller
                 ]);
 
                 Log::info('✅ Tự động đăng nhập từ cookie và lưu session', ['user_id' => $user->id]);
-                return redirect('/userManager');
+                return redirect('/productManager');
             }
         }
 
@@ -102,6 +102,6 @@ class LoginController extends Controller
         cookie()->queue(cookie()->forget('remember_user_id'));
         cookie()->queue(cookie()->forget('remember_token'));
 
-        return redirect('/login');
+        return redirect('/');
     }
 }

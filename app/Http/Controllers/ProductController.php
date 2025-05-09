@@ -53,7 +53,7 @@ class ProductController extends Controller
             'product_name' => ['required', 'string', 'max:255', 'regex:/^[\p{L}0-9\s._\-]+$/u'],
             'product_price' => ['required', 'numeric', 'min:0'],
             'description' => ['required', 'string', 'max:1000', 'regex:/^[^!#$%^&*(),?":{}|<>]+$/'],
-            'is_sales' => ['required', 'in:0,1'],
+            'is_sales' => ['required', 'boolean'],
             'product_image' => ['required', 'image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
         ], messages: [
             'product_name.regex' => 'Tên sản phẩm không được chứa ký tự đặc biệt.',
@@ -63,7 +63,7 @@ class ProductController extends Controller
             'product_price.regex' => "Giá sản phẩm phải là số",
             'product_price.min' => "Giá sản phẩm phải lớn hơn 0",
             'is_sales.required' => "Trạng thái không được để trống",
-            "is_sale.regex" => "Trạng thái không đúng định dạng",
+            "is_sale.boolean" => "Trạng thái không đúng định dạng",
             'product_image.image' => 'File phải là hình ảnh.',
             'product_image.required' => 'Ảnh không được để trống',
             'product_image.mimes' => 'Ảnh phải có định dạng jpg, jpeg, png hoặc gif.',
@@ -124,7 +124,7 @@ class ProductController extends Controller
             'product_name' => ['required', 'string', 'max:255', 'regex:/^[\p{L}0-9\s._\-]+$/u'],
             'product_price' => ['required', 'numeric', 'min:0'],
             'description' => ['required', 'string', 'max:1000', 'regex:/^[^!#$%^&*(),?":{}|<>]+$/'],
-            'is_sales' => ['required', 'in:0,1'],
+            'is_sales' => ['required', 'boolean'],
             'product_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
             'existingImage' => 'nullable|string'
 
@@ -136,7 +136,7 @@ class ProductController extends Controller
             'product_price.regex' => "Giá sản phẩm phải là số.",
             'product_price.min' => "Giá sản phẩm phải lớn hơn 0.",
             'is_sales.required' => "Trạng thái không được để trống.",
-            "is_sale.regex" => "Trạng thái không đúng định dạng.",
+            "is_sale.boolean" => "Trạng thái không đúng định dạng.",
             'product_image.image' => 'File phải là hình ảnh.',
             'product_image.required' => 'Ảnh không được để trống',
             'product_image.mimes' => 'Ảnh phải có định dạng jpg, jpeg, png hoặc gif.',
@@ -182,6 +182,7 @@ class ProductController extends Controller
             'product_name.regex' => 'Tên sản phẩm không được chứa ký tự đặc biệt.',
             'is_sales.regex' => 'Trạng thái sản phẩm không hợp lệ.',
             'min_price.numeric' => 'Giá trị của min_price phải là một số.',
+            'is_sales.boolean'=>"Giá trị phải là 0 hoặc 1",
             'min_price.min' => 'Giá trị min_price phải lớn hơn hoặc bằng 0.',
             'max_price.numeric' => 'Giá trị của max_price phải là một số.',
             'max_price.min' => 'Giá trị max_price phải lớn hơn hoặc bằng 0.',

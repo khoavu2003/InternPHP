@@ -26,6 +26,16 @@ RUN curl -SL http://deb.nodesource.com/setup_18.x | bash && \
 WORKDIR /var/www/html
 
 COPY . .
+RUN mkdir -p storage/framework/views \
+    && mkdir -p storage/framework/cache \
+    && mkdir -p storage/framework/sessions \
+    && mkdir -p storage/logs \
+    && chown -R www-data:www-data storage bootstrap/cache \
+    && chmod -R 775 storage bootstrap/cache
+
+    
+RUN composer install --no-dev --optimize-autoloader
+RUN npm install && npm run build
 
 EXPOSE 8000
 RUN composer install

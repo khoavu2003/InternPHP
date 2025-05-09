@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'verify_email' => $this->faker->boolean(50),
             'is_active' => $this->faker->boolean(90),
             'is_delete' => $this->faker->boolean(10),
-            'group_role' => $this->faker->randomElement(['admin', 'user', 'guest']),
+            'group_role' => $this->faker->randomElement(['Admin', 'User']),
             'last_login_at' => $this->faker->optional()->dateTime(),
             'last_login_ip' => $this->faker->optional()->ipv4(),
             'created_at' => now(),

@@ -1,0 +1,10 @@
+node_modules
+vendor
+.git
+.env
+Dockerfile
+nginx.conf
+public/storage
+storage/*
+bootstrap/cache/*
+*.log

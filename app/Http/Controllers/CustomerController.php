@@ -55,11 +55,9 @@ class CustomerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'customer_name' => ['nullable', 'string', 'max:255', 'regex:/^[\p{L}0-9\s._@\-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠ-ỹ]+$/u'],
-
             'email' => ['nullable', 'regex:/^[a-zA-Z0-9\s@._\-]*$/u'],
             'is_active' => ['nullable', 'boolean'],
             'address' => ['nullable', 'string', 'max:255']
-            
         ], [
             'customer_name.regex' => 'Tên khách hàng không được chứa ký tự đặc biệt.',
             'email.regex' => 'Email không được chứa ký tự đặc biệt.',
@@ -87,6 +85,9 @@ class CustomerController extends Controller
             ]
         ]);
     }
+
+
+    //Add Customer Handle
     public function addCustomer(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -96,7 +97,10 @@ class CustomerController extends Controller
 
             'tel_num' => ['required', 'regex:/^[0-9+\s\-()]{9,11}$/'],
 
-            'address' => ['required', 'string', 'max:255']
+            'address' => ['required', 'string', 'max:255'],
+            
+            'is_active'=>['required','boolean']
+
         ], [
             'customer_name.regex' => 'Tên khách hàng không được chứa ký tự đặc biệt.',
             'email.email' => 'Email không hợp lệ.',
@@ -105,7 +109,9 @@ class CustomerController extends Controller
             'tel_num.required' => 'Số điện thoại không được để trống.',
             'address.required' => 'Địa chỉ không được để trống.',
             'tel_num.regex' => 'Số điện thoại chỉ được chứa số, dấu cộng, dấu gạch ngang, khoảng trắng, từ 9-11 số.',
-            'address.string' => 'Địa chỉ phải là chuỗi văn bản.'
+            'address.string' => 'Địa chỉ phải là chuỗi văn bản.',
+            'is_active.requierd'=>'Trạng thái không được để trống',
+            'is_active.boolean'=>'Trạng thái không đúng định dạng'
         ]);
         if ($validator->stopOnFirstFailure()->fails()) {
             return response()->json([
@@ -131,13 +137,16 @@ class CustomerController extends Controller
         ]);
     }
     
+
+    // Update Customer Handle
     public function updateCustomer(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
             'customer_name' => ['required', 'string', 'max:255', 'regex:/^[\p{L}0-9\s._@\-ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠ-ỹ]+$/u'],
             'email' => ['required', 'email', 'max:255'],
             'tel_num' => ['required', 'regex:/^[0-9+\s\-()]{9,11}$/'],
-            'address' => ['required', 'string', 'max:255']
+            'address' => ['required', 'string', 'max:255'],
+            
         ], [
             'customer_name.regex' => 'Tên khách hàng không được chứa ký tự đặc biệt.',
             'email.email' => 'Email không hợp lệ.',
@@ -146,7 +155,8 @@ class CustomerController extends Controller
             'tel_num.required' => 'Số điện thoại không được để trống.',
             'address.required' => 'Địa chỉ không được để trống.',
             'tel_num.regex' => 'Số điện thoại chỉ được chứa số, dấu cộng, dấu gạch ngang, khoảng trắng, từ 9-11 số.',
-            'address.string' => 'Địa chỉ phải là chuỗi văn bản.'
+            'address.string' => 'Địa chỉ phải là chuỗi văn bản.',
+            
         ]);
         if ($validator->stopOnFirstFailure()->fails()) {
             return response()->json([
